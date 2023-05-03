@@ -6,6 +6,8 @@ function PizzaBlock({ title, price, imege, sizes, types }) {
   const [activeSize, setActiveSize] = React.useState(0);
   const typeNames = ['тонкое', 'традиционное'];
   const [pizzaCount, setCountPizza] = React.useState(0);
+
+  //для коммита
   const onClickAdd = () => {
     setCountPizza(pizzaCount + 1);
   };
