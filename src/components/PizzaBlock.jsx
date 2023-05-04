@@ -1,24 +1,24 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React from 'react';
 
-function PizzaBlock({ title, price, imege, sizes, types }) {
+function PizzaBlock({ title, price, imageUrl, sizes, types }) {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
   const typeNames = ['тонкое', 'традиционное'];
   const [pizzaCount, setCountPizza] = React.useState(0);
 
-  //для коммита
   const onClickAdd = () => {
     setCountPizza(pizzaCount + 1);
   };
   return (
     <div className="pizza-block">
-      <img className="pizza-block__image" src={imege} alt="Pizza" />
+      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
           {types.map((typeId) => (
             <li
+              key={typeId}
               onClick={() => setActiveType(typeId)}
               className={activeType === typeId ? 'active' : ''}>
               {typeNames[typeId]}
@@ -28,7 +28,10 @@ function PizzaBlock({ title, price, imege, sizes, types }) {
 
         <ul>
           {sizes.map((size, i) => (
-            <li onClick={() => setActiveSize(i)} className={activeSize === i ? 'active' : ''}>
+            <li
+              key={size}
+              onClick={() => setActiveSize(i)}
+              className={activeSize === i ? 'active' : ''}>
               {size} см.
             </li>
           ))}
